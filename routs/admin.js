@@ -14,7 +14,14 @@ router.get("/posts",(req, res) =>{
     })
 
     router.get("/categorias",(req, res) =>{
-        res.render("admin/categorias")
+        Categoria.find().then((categorias)=>{
+            //Passando as categorias para a página
+            res.render("admin/categorias.handlebars", {categorias: categorias})
+        }).catch((err)=>{
+            req.flash("error_msg","Houve um erro ao listar as categorias")
+            res.redirect("/admin")
+        })
+        
         })
 
     router.get("/categorias/add",(req, res) =>{

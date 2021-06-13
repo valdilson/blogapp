@@ -30,7 +30,16 @@ const flash = require("connect-flash")
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
     //HandleBars
-    app.engine("handlebars", handlebars({defaultLayout:"main"}))
+    app.engine("handlebars", handlebars({
+        defaultLayout: 'main',
+        runtimeOptions: {
+            allowProtoPropertiesByDefault: true,
+            allowProtoMethodsByDefault: true,
+        },
+    }))
+
+
+
     app.set("view engine","handlebars")
     // Mongoose
         mongoose.Promise = global.Promise;

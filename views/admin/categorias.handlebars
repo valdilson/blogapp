@@ -2,5 +2,19 @@
 <HR>
 
 
-<a href="/admin/categorias/add"> <BUTTon class="btn btn-success">Nova Categoria</BUTTon></a>
+<a href="/admin/categorias/add"> <button class="btn btn-success">Nova Categoria</button></a>
 
+{{#each categorias}}
+
+    <div class="card mt-4" >
+        <div class="card-body">
+        <h4>{{this.nome}}</h4>
+        <small>Slug: {{this.slug}}</small>
+        <br>
+        <small>Data de criação: {{date}}</small>
+        </div>
+    </div>
+
+{{else}}
+
+{{/each}}
